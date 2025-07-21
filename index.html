@@ -3,23 +3,72 @@
 <head>
   <meta charset="UTF-8">
   <title>Catálogo de Descargas</title>
-  <style>
-    body { font-family: sans-serif; margin: 40px; }
-    .archivo { margin-bottom: 20px; border: 1px solid #ccc; padding: 10px; }
-  </style>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <h1>Catálogo de Descargas</h1>
+  <input type="text" id="buscador" placeholder="Buscar..." onkeyup="filtrar()" style="display:block;margin:20px auto;width:90%;max-width:400px;padding:10px;border:1px solid #ccc;border-radius:6px;">
+
+  <!-- Archivo fijo 1 -->
   <div class="archivo">
-    <h2>Archivo 1</h2>
-    <p>Descripción breve del archivo</p>
-    <a href="archivos/archivo1.pdf" download>Descargar</a>
+    <h2>Backup Importante</h2>
+    <p>Archivo alojado en MEGA. Asegurate de tener cuenta para descargar.</p>
+    <a href="https://mega.nz/file/CdBxSbLS#614g-IPqmXHKsbizJE4TIxpI2vKNbOwDKKpjDaBPWR4" target="_blank">Descargar desde MEGA</a>
   </div>
 
+  <!-- Archivo fijo 2 -->
   <div class="archivo">
     <h2>Archivo 2</h2>
     <p>Descripción breve del archivo</p>
     <a href="archivos/archivo2.zip" download>Descargar</a>
   </div>
+
+  <!-- Archivos desde Supabase -->
+  <div id="lista"></div>
+
+  
+
+<script>
+  function filtrar() {
+    const filtro = document.getElementById("buscador").value.toLowerCase();
+    const archivos = document.querySelectorAll(".archivo");
+    archivos.forEach(div => {
+      div.style.display = div.innerText.toLowerCase().includes(filtro) ? "block" : "none";
+    });
+  }
+</script>
+
+
+
+  <script>
+    const SUPABASE_URL = 'https://usydjgeczejnulewloac.supabase.co';
+    const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVzeWRqZ2VjemVqbnVsZXdsb2FjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTMwOTM3MDAsImV4cCI6MjA2ODY2OTcwMH0.sBI9P9bDGYwNDU8D6Laca6OPWzUTAqsVpQCp0-zUf2U';
+
+const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+    async function cargarArchivos() {
+      const { data, error } = await supabaseClient.from("archivos").select("*").order("fecha", { ascending: false });
+
+      if (error) {
+        document.getElementById("lista").innerHTML = "Error al cargar archivos.";
+        return;
+      }
+
+      const contenedor = document.getElementById("lista");
+      data.forEach((archivo) => {
+        const div = document.createElement("div");
+        div.className = "archivo";
+        div.innerHTML = `
+          <h2>${archivo.titulo}</h2>
+          <p>${archivo.descripcion || "Sin descripción"}</p>
+          <a href="${archivo.link}" target="_blank">Descargar</a>
+        `;
+        contenedor.appendChild(div);
+      });
+    }
+
+    cargarArchivos();
+  </script>
 </body>
 </html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Panel de Carga - Catálogo</title>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+  <h2 style="text-align: center;">Agregar archivo al catálogo</h2>
+
+  <form onsubmit="guardarArchivo(event)">
+    <input type="text" id="titulo" placeholder="Título del archivo" required />
+    <textarea id="descripcion" placeholder="Descripción del archivo (opcional)"></textarea>
+    <input type="url" id="link" placeholder="Link de descarga (MEGA, Drive, etc.)" required />
+    <button type="submit">Guardar</button>
+  </form>
+
+  <script>
+    const SUPABASE_URL = 'https://usydjgeczejnulewloac.supabase.co';
+    const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVzeWRqZ2VjemVqbnVsZXdsb2FjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTMwOTM3MDAsImV4cCI6MjA2ODY2OTcwMH0.sBI9P9bDGYwNDU8D6Laca6OPWzUTAqsVpQCp0-zUf2U';
+
+    const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+    async function guardarArchivo(event) {
+      event.preventDefault();
+
+      const titulo = document.getElementById("titulo").value;
+      const descripcion = document.getElementById("descripcion").value;
+      const link = document.getElementById("link").value;
+
+      const { error } = await supabaseClient.from("archivos").insert([{ titulo, descripcion, link }]);
+
+      if (error) {
+        alert("Error al guardar: " + error.message);
+      } else {
+        alert("Archivo guardado correctamente.");
+        event.target.reset();
+      }
+    }
+  </script>
+</body>
+</html>
