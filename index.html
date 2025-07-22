@@ -1,34 +1,88 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7095106377923651"
-     crossorigin="anonymous"></script>
-  <meta charset="UTF-8">
-  <title>Catálogo de Descargas</title>
-
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Inicio - Noticias</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
-  <h1>Catálogo de Descargas</h1>
-  <input type="text" id="buscador" placeholder="Buscar..." onkeyup="filtrar()" style="display:block;margin:20px auto;width:90%;max-width:400px;padding:10px;border:1px solid #ccc;border-radius:6px;">
+  <header>
+    <div class="logo">🌐 Sk-Descargas</div>
+    <nav>
+      <a href="#">Apps</a>
+      <a href="#">Juegos</a>
+      <a href="#">Noticias</a>
+      <a href="#">For Business</a>
+    </nav>
+  </header>
 
-  <!-- Archivo fijo 1 -->
-  <div class="archivo">
-    <h2>Backup Importante</h2>
-    <p>Archivo alojado en MEGA. Asegurate de tener cuenta para descargar.</p>
-    <a href="https://mega.nz/file/CdBxSbLS#614g-IPqmXHKsbizJE4TIxpI2vKNbOwDKKpjDaBPWR4" target="_blank">Descargar desde MEGA</a>
+  <section class="hero">
+    <h1>Tus mejores Noticias<br>en un solo lugar.</h1>
+    <div class="search-bar">
+      <input type="text" placeholder="¿Qué quieres buscar?" />
+      <button>🔍</button>
+    </div>
+  </section>
+
+  <section class="categorias">
+    <div class="cat">🎮 Juegos para Roblox</div>
+    <div class="cat">🌐 Extensiones de Chrome</div>
+    <div class="cat">🛡️ VPN</div>
+    <div class="cat">🤖 IA</div>
+  </section>
+
+  
+<section class="catalogo">
+  <h2>Catálogo de Programas</h2>
+  <div class="grid-catalogo">
+    <div class="tarjeta">
+      <img src="https://i.imgur.com/Zhk23Pc.jpeg" alt="Programa 1">
+      <h3>Programa 1</h3>
+      <p>Descripción breve del programa. Compatible con Windows.</p>
+      <a href="#" class="descargar">Descargar</a>
+    </div>
+
+    <div class="tarjeta">
+      <img src="https://i.imgur.com/Zhk23Pc.jpeg" alt="Programa 2">
+      <h3>Programa 2</h3>
+      <p>Ideal para edición de imágenes y diseño gráfico.</p>
+      <a href="#" class="descargar">Descargar</a>
+    </div>
+
+    <div class="tarjeta">
+      <img src="https://i.imgur.com/Zhk23Pc.jpeg" alt="Programa 3">
+      <h3>Programa 3</h3>
+      <p>Ideal para edición de imágenes y diseño gráfico.</p>
+      <a href="#" class="descargar">Descargar</a>
+    </div>
+
+    <div class="tarjeta">
+      <img src="https://i.imgur.com/Zhk23Pc.jpeg" alt="Programa 4">
+      <h3>Programa 4</h3>
+      <p>Editor de video intuitivo para principiantes.</p>
+      <a href="#" class="descargar">Descargar</a>
+    </div>
+
+    <div class="tarjeta">
+      <img src="https://i.imgur.com/Zhk23Pc.jpeg" alt="Programa 5">
+      <h3>Programa 5</h3>
+      <p>Suite ofimática gratuita y compatible con Office.</p>
+      <a href="#" class="descargar">Descargar</a>
+    </div>
+
+    <div class="tarjeta">
+      <img src="https://i.imgur.com/Zhk23Pc.jpeg" alt="Programa 6">
+      <h3>Programa 6</h3>
+      <p>Herramienta de compresión y descompresión de archivos.</p>
+      <a href="#" class="descargar">Descargar</a>
+    </div>
   </div>
+</section>
 
-  <!-- Archivo fijo 2 -->
-  <div class="archivo">
-    <h2>Archivo 2</h2>
-    <p>Descripción breve del archivo</p>
-    <a href="archivos/archivo2.zip" download>Descargar</a>
-  </div>
 
-  <!-- Archivos desde Supabase -->
-  <div id="lista"></div>
+
+
 </body>
-  <script src="main.js"></script>
 </html>

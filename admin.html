@@ -2,17 +2,19 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
+    <link rel="stylesheet" href="styles.css">
   <title>Panel de Carga - Catálogo</title>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
 <body>
   <h2 style="text-align: center;">Agregar archivo al catálogo</h2>
-
-  <form onsubmit="guardarArchivo(event)">
-    <input type="text" id="titulo" placeholder="Título del archivo" required />
-    <textarea id="descripcion" placeholder="Descripción del archivo (opcional)"></textarea>
-    <input type="url" id="link" placeholder="Link de descarga (MEGA, Drive, etc.)" required />
-    <button type="submit">Guardar</button>
-  </form>
+<form onsubmit="guardarArchivo(event)">
+  <input type="text" id="titulo" placeholder="Título del archivo" required />
+  <textarea id="descripcion" placeholder="Descripción (opcional)"></textarea>
+  <input type="url" id="link" placeholder="Link de descarga" required />
+  <input type="file" id="imagen" accept="image/*" required />
+  <button type="submit">Guardar</button>
+</form>
 </body>
+  <script src="main.js"></script>
 </html>
