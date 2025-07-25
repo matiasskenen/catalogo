@@ -156,3 +156,16 @@ body.dark-mode .descargar {
 body.dark-mode .descargar:hover {
   background-color: #0288d1;
 }
+
+.logo a {
+  text-decoration: none;
+  color: #2196f3;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.fondo-proyecto {
+  padding: 60px 20px;
+  color: white;
+  text-align: center;
+}

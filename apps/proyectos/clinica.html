@@ -5,26 +5,155 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Proyecto Clínica</title>
   <link rel="stylesheet" href="/styles.css" />
-  <script src="dark-mode.js"></script>
+  <script src="/dark-mode.js"></script>
+  <style>
+    body {
+      background-color: #f0eeee;
+      background-size: cover;
+      background-attachment: fixed;
+      background-position: center;
+      color: #fff;
+    }
+
+    .carrusel-container {
+      position: relative;
+      max-width: 900px;
+      margin: 2rem auto;
+    }
+
+    .carrusel-imagen {
+      width: 100%;
+      height: 500px;
+      object-fit: contain;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.4);
+    }
+
+    .flecha {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 2rem;
+      background: rgba(0,0,0,0.3);
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      cursor: pointer;
+      z-index: 2;
+      border-radius: 5px;
+    }
+
+    .flecha.izq {
+      left: 10px;
+    }
+
+    .flecha.der {
+      right: 10px;
+    }
+
+    .descargar {
+      display: inline-block;
+      margin-top: 2rem;
+      background-color: #2563eb;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 6px;
+      text-decoration: none;
+    }
+
+    .descargar:hover {
+      background-color: #1d4ed8;
+    }
+
+    .fondo-proyecto {
+      background-color: #45a2c7;
+      color: white;
+      padding: 60px 20px;
+      text-align: center;
+      border-radius: 0 0 20px 20px;
+    }
+
+    .detalles {
+      max-width: 900px;
+      margin: 3rem auto;
+      padding: 1rem;
+      background: rgba(255, 255, 255, 0.9);
+      color: #111;
+      border-radius: 10px;
+      box-shadow: 0 1px 5px rgba(0,0,0,0.3);
+    }
+  </style>
 </head>
 <body>
   <header>
-    <div class="logo">🌐 Sk-Descargas</div>
+    <div class="logo">
+      <a href="/index.html">🌐 Sk-Descargas</a>
+    </div>
     <nav>
       <a href="/index.html">Apps</a>
-      <a href="/apps/header/sobre.html">Sobre mi</a>
+      <a href="/apps/header/sobre.html">Sobre mí</a>
       <a href="/apps/header/contacto.html">Contacto</a>
       <a href="/apps/header/cv.html">CV</a>
+      <button onclick="toggleDarkMode()">🌙</button>
     </nav>
   </header>
 
-  <main style="padding: 2rem;">
+  <!-- Encabezado -->
+  <section class="fondo-proyecto">
     <h1>Clínica | Sistema de Turnos</h1>
-    <img src="assets/clinica.PNG" alt="Clínica" style="max-width: 100%; margin-top: 20px;" />
-    <p style="margin-top: 20px;">
-      Proyecto realizado con Firebase, HTML y CSS para la gestión de turnos en centros de salud. Incluye funcionalidades como...
+    <p style="max-width: 800px; margin: auto; margin-top: 1rem;">
+      Proyecto web desarrollado con Firebase y HTML para turnos médicos. Incluye gestión de usuarios, login, registro, y panel de administración.
     </p>
-    <a class="descargar" href="https://tplabo4final.web.app/home" target="_blank">Ir al proyecto en vivo</a>
+  </section>
+
+  <!-- Carrusel + link -->
+  <main style="padding: 2rem; max-width: 1000px; margin: auto;">
+    <div class="carrusel-container">
+      <button class="flecha izq" onclick="cambiarImagen(-1)">&#10094;</button>
+      <img id="carrusel" class="carrusel-imagen" src="/assets/clinica/1 clinica.png" alt="Pantalla clínica" />
+      <button class="flecha der" onclick="cambiarImagen(1)">&#10095;</button>
+    </div>
+
+    <div style="text-align: center;">
+      <a class="descargar" href="https://tplabo4final.web.app/home" target="_blank">Ir al proyecto en vivo</a>
+    </div>
+
+    <!-- Descripción -->
+    <section class="detalles">
+      <h2 style="margin-bottom: 1rem;">Detalles del Proyecto</h2>
+      <p style="line-height: 1.6;">
+        Esta aplicación permite a los pacientes registrarse y solicitar turnos según especialidades médicas disponibles. El panel de administración permite agregar horarios, médicos y controlar la disponibilidad. El sistema incluye autenticación con Firebase y validación en tiempo real.
+      </p>
+      <p style="line-height: 1.6; margin-top: 1rem;">
+        También se incorpora una vista diferenciada para usuarios administrativos, que pueden ver métricas de actividad, estados de turnos y exportar la información.
+      </p>
+      <p style="line-height: 1.6; margin-top: 1rem;">
+        Este sistema fue utilizado como base para clínicas pequeñas que buscan digitalizar el proceso de asignación de turnos de forma rápida y segura.
+      </p>
+    </section>
   </main>
+
+  <script>
+    const imagenes = [
+      "/assets/clinica/1 clinica.png",
+      "/assets/clinica/2 clinica.png",
+      "/assets/clinica/3 clinica.png",
+      "/assets/clinica/4 clinica.png",
+      "/assets/clinica/5 clinica.png",
+      "/assets/clinica/6 clinica.png",
+      "/assets/clinica/7 clinica.png",
+      "/assets/clinica/clinica.png"
+    ];
+
+    let actual = 0;
+    const carrusel = document.getElementById('carrusel');
+
+    function cambiarImagen(direccion) {
+      actual += direccion;
+      if (actual < 0) actual = imagenes.length - 1;
+      if (actual >= imagenes.length) actual = 0;
+      carrusel.src = imagenes[actual];
+    }
+  </script>
 </body>
 </html>
