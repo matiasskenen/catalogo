@@ -92,4 +92,12 @@ async function guardarArchivo(event) {
     alert("Archivo guardado con éxito.");
     event.target.reset();
   }
+
+
+
 }
+
+function toggleDarkMode() {
+  document.body.classList.toggle('dark-mode');
+}
+

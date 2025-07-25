@@ -71,7 +71,7 @@ nav a {
 
 .catalogo {
   padding: 60px 20px 40px;
-  background: #fff;
+  background: #f1f1f1;
   text-align: center;
 }
 
@@ -136,4 +136,23 @@ nav a {
 
 .descargar:hover {
   background-color: #0056b3;
+}
+
+body.dark-mode {
+  background-color: #121212;
+  color: #f0f0f0;
+}
+
+body.dark-mode header,
+body.dark-mode .tarjeta {
+  background-color: #1e1e1e;
+  color: white;
+}
+
+body.dark-mode .descargar {
+  background-color: #03a9f4;
+}
+
+body.dark-mode .descargar:hover {
+  background-color: #0288d1;
 }
